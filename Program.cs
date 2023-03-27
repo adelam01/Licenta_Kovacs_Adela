@@ -1,7 +1,12 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Licenta_Kovacs_Adela.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<Licenta_Kovacs_AdelaContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Licenta_Kovacs_AdelaContext") ?? throw new InvalidOperationException("Connection string 'Licenta_Kovacs_AdelaContext' not found.")));
 
 var app = builder.Build();
 

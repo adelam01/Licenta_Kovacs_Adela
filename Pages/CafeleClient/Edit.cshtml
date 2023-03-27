@@ -1,0 +1,102 @@
+﻿@page
+@model Licenta_Kovacs_Adela.Pages.CafeleClient.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>CafeaClient</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CafeaClient.ID" />
+            <div class="form-group">
+                <label asp-for="CafeaClient.DenumireCafea" class="control-label"></label>
+                <input asp-for="CafeaClient.DenumireCafea" class="form-control" />
+                <span asp-validation-for="CafeaClient.DenumireCafea" class="text-danger"></span>
+            </div>
+            <!--DROPDOWNLIST PENTRU MARIME-->
+            <div class="form-group">
+                <label asp-for="CafeaClient.MarimeID" class="control-label">Marime</label>
+                <select asp-for="CafeaClient.MarimeID" class="form-control" asp-items="ViewBag.MarimeID">
+                </select>
+                <span asp-validation-for="CafeaClient.MarimeID" class="text-danger"></span>
+            </div>
+
+            <!--DROPDOWNLIST PENTRU TIP CAFEA-->
+            <div class="form-group">
+                <label asp-for="CafeaClient.TipCafeaID" class="control-label">Tip Cafea</label>
+                <select asp-for="CafeaClient.TipCafeaID" class="form-control" asp-items="ViewBag.TipCafeaID">
+                </select>
+                <span asp-validation-for="CafeaClient.TipCafeaID" class="text-danger"></span>
+            </div>
+
+            <!--DROPDOWNLIST PENTRU TIP BOABE-->
+            <div class="form-group">
+                <label asp-for="CafeaClient.BobID" class="control-label">Boabe</label>
+                <select asp-for="CafeaClient.BobID" class="form-control" asp-items="ViewBag.BobID">
+                </select>
+                <span asp-validation-for="CafeaClient.BobID" class="text-danger"></span>
+            </div>
+
+            <!--DROPDOWNLIST PENTRU TIP LAPTE-->
+            <div class="form-group">
+                <label asp-for="CafeaClient.LapteID" class="control-label">Lapte</label>
+                <select asp-for="CafeaClient.LapteID" class="form-control" asp-items="ViewBag.LapteID">
+                </select>
+                <span asp-validation-for="CafeaClient.LapteID" class="text-danger"></span>
+            </div>
+
+            <!--DROPDOWNLIST PENTRU TIP AROMA-->
+            <div class="form-group">
+                <label asp-for="CafeaClient.AromaID" class="control-label">Aroma</label>
+                <select asp-for="CafeaClient.AromaID" class="form-control" asp-items="ViewBag.AromaID">
+                </select>
+                <span asp-validation-for="CafeaClient.AromaID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="table">
+                    <table>
+                        <tr>
+                            @{
+                                int cnt = 0;
+                                foreach (var cat in Model.AtribuireToppingDataList)
+                                {
+                                    if (cnt++ % 3 == 0)
+                                    {
+                                        @:</tr><tr>
+                                    }
+                                    @:<td>
+                                    <input type="radio"
+                                    name="selectedToppings"
+                                    value="@cat.ToppingID"
+                                    @(Html.Raw(cat.Atribuire ?
+                                        "checked=\"checked\"" : "")) />
+                                        @cat.ToppingID @: @cat.Denumire
+                                        @:</td>
+                                }
+                                @:</tr>
+                            }
+                            </table>
+                            </div>
+                            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

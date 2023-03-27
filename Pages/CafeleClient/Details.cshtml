@@ -1,0 +1,55 @@
+﻿@page
+@model Licenta_Kovacs_Adela.Pages.CafeleClient.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>CafeaClient</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CafeaClient.DenumireCafea)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CafeaClient.DenumireCafea)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CafeaClient.TipCafea)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CafeaClient.TipCafea.ID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CafeaClient.Bob)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CafeaClient.Bob.ID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CafeaClient.Lapte)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CafeaClient.Lapte.ID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CafeaClient.Aroma)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CafeaClient.Aroma.ID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CafeaClient.Marime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CafeaClient.Marime.ID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.CafeaClient?.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
